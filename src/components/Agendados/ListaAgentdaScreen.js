@@ -37,4 +37,46 @@ class ListaAgendaScreen extends Component{
                      
                 </Pressable>
 
-                <Pressable onPress={this.t
+                <Pressable onPress={this.toogleFavorite}>
+
+                    <Text style={Styles.texto} >Asesor: Leonardo Villegas</Text>
+                    <Text style={Styles.texto} >Fecha de cita: 10-09-2021 02:00</Text>
+                    <Text style={Styles.texto} >Descripción: Revision 18 o 24.000 kl <Text style= { Styles.buttonIr }> Ir</Text></Text>
+                     
+                </Pressable>
+
+                <Pressable onPress={this.toogleFavorite}>
+
+                    <Text style={Styles.texto} >Asesor: Edwin Sanchez</Text>
+                    <Text style={Styles.texto} >Fecha de cita: 20-08-2021 02:00 pm</Text>
+                    <Text style={Styles.texto} >Descripción: Revision 30 o 40.000 kl <Text style= { Styles.buttonIr }> Ir</Text></Text>
+                     
+                </Pressable>
+
+                {/* <Text>Lista</Text>
+                <Text>Lista</Text>
+                <Text>Lista</Text>
+                <Text>Lista</Text> */}
+
+            </View>
+        )
+    }
+}
+
+const Styles = StyleSheet.create({
+    texto:{
+        fontWeight: 'bold',
+        marginLeft: 30,
+    },
+
+    buttonIr:{
+        backgroundColor:'#f0f',
+        width:20,
+        height:10,
+        fontSize:15,
+
+    }
+})
+
+
+export default ListaAgendaScreen
