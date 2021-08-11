@@ -42,6 +42,49 @@ const DATA = [
         title: 'METODO DE PAGO',
         dato: "XSS12T"
     },
+]
+
+const DATA2 = [
+    {
+        id: '1',
+        title: 'NOMBRE',
+        dato: "XSS12T"
+    },
+    {
+        id: '2',
+        title: 'APELLIDO',
+        dato: "XSS12T"
+    },
+    {
+        id: '3',
+        title: 'CELULAR',
+        dato: "XSS12T"
+    },
+    {
+        id: '4',
+        title: 'TELEFONO',
+        dato: "XSS12T"
+    },
+    {
+        id: '5',
+        title: 'EMAIL',
+        dato: "XSS12T"
+    },
+    {
+        id: '6',
+        title: 'DIRECCIÓN',
+        dato: "XSS12T"
+    },
+    {
+        id: '7',
+        title: 'CIUDAD',
+        dato: "XSS12T"
+    },
+    {
+        id: '8',
+        title: 'CITA',
+        dato: "XSS12T"
+    },
 ];
 
 class DatosClienteVehiculo extends Component{
@@ -61,6 +104,21 @@ class DatosClienteVehiculo extends Component{
 
         const renderItem = ({ item }) => (
             <Item title={item.title} />
+        )
+
+        const Item2 = ({ title }) => (
+            <View>
+                <Text>{title}</Text>
+                <TextInput
+                    style = {Styles.textInput}
+                    placeholder='DOS'
+                    defaultValue= 'DOS' //{DATA.dato}
+                />
+            </View>
+        )
+
+        const renderItem2 = ({ item }) => (
+            <Item2 title={item.title} />
         );
         
         actualizar =()=>{
@@ -85,11 +143,18 @@ class DatosClienteVehiculo extends Component{
                         renderItem={renderItem}
                         keyExtractor={item => item.id}
                     />
-                    <View style={Styles.actualizar}>
-                        <Pressable onPress={this.actualizar}><Text style={Styles.textoButtonActu}>Actualizar</Text></Pressable>
-                    </View>
+
+                    <FlatList
+                        style = {Styles.lista}
+                        data={DATA2}
+                        renderItem={renderItem2}
+                        keyExtractor={item2 => item2.id}
+                    />
+  
                 </View>
-               
+                <View style={Styles.actualizar}>
+                    <Pressable onPress={this.actualizar}><Text style={Styles.textoButtonActu}>Actualizar</Text></Pressable>
+                </View>
             </View>   
         )
     }
@@ -116,7 +181,6 @@ const Styles = StyleSheet.create({
         marginLeft: 20,
         marginTop: 20,
         borderRadius:20,
-        
     },
     textoButtonActu:{
         fontSize:20,
@@ -126,11 +190,14 @@ const Styles = StyleSheet.create({
         
     },
     containerInput:{
-        marginBottom: 170
+        marginBottom: 170,
+        flexDirection: 'row',
+        justifyContent:'space-between',
     },
     lista:{
         marginLeft:20,
-        width:300
+        marginRight:20,
+        width:180
     },
     titulo:{
         fontWeight:'bold'

@@ -15,10 +15,15 @@ const HomeStack = () =>{
         <Stack.Navigator
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: Colors.blackPearl
+                    backgroundColor: Colors.blackPearl,
+                    height:50
                 },
                 headerTintColor: Colors.white,
-                headerTitleAlign: 'center'
+                headerTitleAlign: 'center',
+                headerTitleStyle:{
+                    marginBottom:20
+                }
+                                
             }}
         >
             

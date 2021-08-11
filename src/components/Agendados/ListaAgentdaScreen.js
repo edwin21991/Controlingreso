@@ -1,62 +1,49 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Pressable } from 'react-native'
-// import RadioButton from 'expo-radio-button'
+import { View, Text, StyleSheet, Pressable, FlatList } from 'react-native'
+import AgendaSearch from './AgendaSearch'
+import DatosAgendados from '../../res/Agendados'
+import colors from '../../res/Colors'
 
 class ListaAgendaScreen extends Component{
 
-    toogleFavorite=()=>{
+    toogleDatos=()=>{
         this.props.navigation.navigate('Datos')
     }
 
     render(){
 
-        // const [current, setCurrent] = useState("option 1")
+        const Item = ({ asesor, fechaCita, Descripcion }) => (
+            <View>
+                <Text style={Styles.textoCita}>Asesor: {asesor}</Text>
+                <Text style={Styles.textoCita}>Fecha de cita: {fechaCita}</Text>
+                <Text style={Styles.borde}>
+                    Descripción: {Descripcion}
+                    <Pressable onPress={this.toogleDatos}>
+                        <Text style={Styles.ButtonIr}>IR</Text> 
+                    </Pressable>
+                </Text>
+            </View>
+        )
+
+        const renderItem = ({ item }) => (
+            <Item 
+                asesor={item.asesor}
+                fechaCita={item.fechaCita} 
+                Descripcion={item.Descripcion} 
+            />
+        )
     
         return(
             <View>
                 
-               {/* <RadioButton value="option 1"
-                    containerStyle={{ marginBottom: 10 }}
-                    selected={current} onSelected={(value) => setCurrent(value)} 
-                    radioBackground="green" >
-                    <Text>Option 1</Text>
-                </RadioButton> */}
-                <Pressable onPress={this.toogleFavorite}>
+                <AgendaSearch onChange={this.handleSearch}/>  
 
-                    <Text style={Styles.texto} >Asesor: Edwin Sanchez</Text>
-                    <Text style={Styles.texto} >Fecha de cita: 20-08-2021 08:00 am</Text>
-                    <Text style={Styles.texto} >Descripción: Revision 12 o 16.000 kl <Text style= { Styles.buttonIr }> Ir</Text></Text>
-                     
-                </Pressable>
-
-                <Pressable onPress={this.toogleFavorite}>
-
-                    <Text style={Styles.texto} >Asesor: Hillary Sanchez</Text>
-                    <Text style={Styles.texto} >Fecha de cita: 02-09-2021 12:00 am</Text>
-                    <Text style={Styles.texto} >Descripción: Revision 12 o 16.000 kl <Text style= { Styles.buttonIr }> Ir</Text></Text>
-                     
-                </Pressable>
-
-                <Pressable onPress={this.toogleFavorite}>
-
-                    <Text style={Styles.texto} >Asesor: Leonardo Villegas</Text>
-                    <Text style={Styles.texto} >Fecha de cita: 10-09-2021 02:00</Text>
-                    <Text style={Styles.texto} >Descripción: Revision 18 o 24.000 kl <Text style= { Styles.buttonIr }> Ir</Text></Text>
-                     
-                </Pressable>
-
-                <Pressable onPress={this.toogleFavorite}>
-
-                    <Text style={Styles.texto} >Asesor: Edwin Sanchez</Text>
-                    <Text style={Styles.texto} >Fecha de cita: 20-08-2021 02:00 pm</Text>
-                    <Text style={Styles.texto} >Descripción: Revision 30 o 40.000 kl <Text style= { Styles.buttonIr }> Ir</Text></Text>
-                     
-                </Pressable>
-
-                {/* <Text>Lista</Text>
-                <Text>Lista</Text>
-                <Text>Lista</Text>
-                <Text>Lista</Text> */}
+                    <FlatList
+                        style = {Styles.lista}
+                        data={DatosAgendados}
+                        renderItem={renderItem}
+                        keyExtractor={item => item.id}
+                    />
 
             </View>
         )
@@ -75,6 +62,28 @@ const Styles = StyleSheet.create({
         height:10,
         fontSize:15,
 
+    },
+    lista:{
+        marginLeft:20,
+        marginRight:20,
+        width:380,
+        marginBottom:70
+    },
+    borde:{
+        fontWeight:'bold',
+        borderBottomWidth: 2,
+    },
+    ButtonIr:{
+        marginLeft:20,
+        backgroundColor: 'green',
+        borderRadius:10,
+        color:'white',
+        padding:2,
+        fontWeight: 'bold',
+       
+    },
+    textoCita:{
+        fontWeight:'bold'
     }
 })
 
