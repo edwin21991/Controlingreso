@@ -1,137 +1,58 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, StyleSheet, FlatList, Pressable } from 'react-native'
-
-const DATA = [
-    {
-        id: '1',
-        title: 'PLACA',
-        dato: "XSS12T"
-    },
-    {
-        id: '2',
-        title: 'MARCA',
-        dato: "XSS12T"
-    },
-    {
-        id: '3',
-        title: 'MODELO',
-        dato: "XSS12T"
-    },
-    {
-        id: '4',
-        title: 'AÑO',
-        dato: "XSS12T"
-    },
-    {
-        id: '5',
-        title: 'COLOR',
-        dato: "XSS12T"
-    },
-    {
-        id: '6',
-        title: 'VRN',
-        dato: "XSS12T"
-    },
-    {
-        id: '7',
-        title: 'KM',
-        dato: "XSS12T"
-    },
-    {
-        id: '8',
-        title: 'METODO DE PAGO',
-        dato: "XSS12T"
-    },
-]
-
-const DATA2 = [
-    {
-        id: '1',
-        title: 'NOMBRE',
-        dato: "XSS12T"
-    },
-    {
-        id: '2',
-        title: 'APELLIDO',
-        dato: "XSS12T"
-    },
-    {
-        id: '3',
-        title: 'CELULAR',
-        dato: "XSS12T"
-    },
-    {
-        id: '4',
-        title: 'TELEFONO',
-        dato: "XSS12T"
-    },
-    {
-        id: '5',
-        title: 'EMAIL',
-        dato: "XSS12T"
-    },
-    {
-        id: '6',
-        title: 'DIRECCIÓN',
-        dato: "XSS12T"
-    },
-    {
-        id: '7',
-        title: 'CIUDAD',
-        dato: "XSS12T"
-    },
-    {
-        id: '8',
-        title: 'CITA',
-        dato: "XSS12T"
-    },
-];
+import { View, Text, TextInput, StyleSheet, FlatList, Pressable, Picker } from 'react-native'
+import {DATA, DATA2} from '../../res/DatosVehiculoCliente'
 
 class DatosClienteVehiculo extends Component{
 
+    toogleInventarioSugerencias = () => {
+        this.props.navigation.navigate('InventarioSugerencias')
+    }
+
     render(){
 
-        const Item = ({ title }) => (
+        const Item = ({ title, dato }) => (
             <View>
-                <Text>{title}</Text>
+                <Text style={Styles.textoTitulo}>{title}</Text>
                 <TextInput
                     style = {Styles.textInput}
-                    placeholder='Placa'
-                    defaultValue= 'placa' //{DATA.dato}
+                    placeholder={title}
+                    defaultValue= {dato}
                 />
             </View>
         )
 
         const renderItem = ({ item }) => (
-            <Item title={item.title} />
+            <Item 
+                title={item.title} 
+                dato={item.dato}        
+            />
         )
 
-        const Item2 = ({ title }) => (
+        const Item2 = ({ title, dato }) => (
             <View>
-                <Text>{title}</Text>
+                <Text style={Styles.textoTitulo}>{title}</Text>
                 <TextInput
                     style = {Styles.textInput}
-                    placeholder='DOS'
-                    defaultValue= 'DOS' //{DATA.dato}
+                    placeholder={title}
+                    defaultValue= {dato} 
                 />
             </View>
         )
 
         const renderItem2 = ({ item }) => (
-            <Item2 title={item.title} />
+            <Item2 
+                title={item.title}
+                dato={item.dato}
+            />
         );
-        
-        actualizar =()=>{
-
-        }
 
         return(
 
             <View >
 
                 <View style={Styles.container}>
-                    <Text>DATOS DEL VEHÍCULO</Text>
-                    <Text>DATOS DEL CLIENTE</Text>
+                    <Text style={Styles.textoTitulo}>DATOS DEL VEHÍCULO</Text>
+                    <Text style={Styles.textoTitulo}>CONTACTOS</Text>
                     <Text></Text>
                 </View>
                 
@@ -150,10 +71,22 @@ class DatosClienteVehiculo extends Component{
                         renderItem={renderItem2}
                         keyExtractor={item2 => item2.id}
                     />
-  
+
                 </View>
                 <View style={Styles.actualizar}>
-                    <Pressable onPress={this.actualizar}><Text style={Styles.textoButtonActu}>Actualizar</Text></Pressable>
+                    <Pressable 
+                        onPress={this.toogleInventarioSugerencias} 
+                        style={Styles.pressable1}
+                    >
+                        <Text style={Styles.textoButtonActu}>Actualizar</Text>
+                    </Pressable>
+
+                    <Pressable 
+                        onPress={this.toogleInventarioSugerencias}
+                        style={Styles.pressable2}
+                    >
+                        <Text style={Styles.textoButtonActu}>Actualizar</Text>
+                    </Pressable>
                 </View>
             </View>   
         )
@@ -161,36 +94,38 @@ class DatosClienteVehiculo extends Component{
 }
 
 const Styles = StyleSheet.create({
+
     container:{
         flexDirection: 'row',
         justifyContent:'space-between',
         margin: 10,
         borderBottomWidth: 3,
     },
+    textoTitulo:{
+        fontWeight:'bold',
+    },
     textInput:{
         borderBottomWidth: 3,
         backgroundColor: 'gray',
         borderRadius:5,
         paddingLeft:5,
+        color: 'white'
     },
     actualizar:{
-        backgroundColor:'blue',
-        alignItems:'center',
-        width:300,
-        height:20,
+        flexDirection: 'row',
+        justifyContent:'space-between',
         marginLeft: 20,
-        marginTop: 20,
-        borderRadius:20,
+        marginBottom:-150
     },
     textoButtonActu:{
         fontSize:20,
         color: 'white',
         fontWeight:'bold',
-        paddingTop:-5,
-        
+        marginBottom:10,
+       
     },
     containerInput:{
-        marginBottom: 170,
+        marginBottom: 10,
         flexDirection: 'row',
         justifyContent:'space-between',
     },
@@ -201,6 +136,22 @@ const Styles = StyleSheet.create({
     },
     titulo:{
         fontWeight:'bold'
+    },
+    pressable1:{
+        width:300,
+        height:30,
+        alignItems:'center',
+        borderRadius:20,
+        // marginLeft:20,
+        backgroundColor:'gray',
+    },
+    pressable2:{
+        width:300,
+        height:30,
+        alignItems:'center',
+        borderRadius:20,
+        backgroundColor:'gray',
+        marginRight:30
     }
 })
 

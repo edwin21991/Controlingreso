@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { TextInput, View, Platform, StyleSheet } from 'react-native'
+import { TextInput, View, StyleSheet } from 'react-native'
 
 class AgendaSearch extends Component {
 

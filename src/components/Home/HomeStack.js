@@ -5,6 +5,7 @@ import Colors from '../../res/Colors'
 import ListaAgendaScreen from '../Agendados/ListaAgentdaScreen'
 import ScannerScreen from '../Scanner/ScannerScreen'
 import DatosClienteVehiculo from '../Datos/DatosClienteVehiculo'
+import InventarioSugerencias from '../InventarioIngreso/InventarioSugerencias'
 
 const Stack = createStackNavigator()
 
@@ -27,11 +28,11 @@ const HomeStack = () =>{
             }}
         >
             
-            <Stack.Screen name="Control de Ingreso" component= { HomeScreen }/>
+            <Stack.Screen name="ControlIngreso" component= { HomeScreen }/>
             <Stack.Screen name="Lista" component = { ListaAgendaScreen } />
             <Stack.Screen name="Scanner" component = { ScannerScreen } />
             <Stack.Screen name="Datos" component = { DatosClienteVehiculo } />
-
+            <Stack.Screen name="InventarioSugerencias" component = { InventarioSugerencias } />
         </Stack.Navigator>
     )
 }
