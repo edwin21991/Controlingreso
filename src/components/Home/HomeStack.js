@@ -6,6 +6,7 @@ import ListaAgendaScreen from '../Agendados/ListaAgentdaScreen'
 import ScannerScreen from '../Scanner/ScannerScreen'
 import DatosClienteVehiculo from '../Datos/DatosClienteVehiculo'
 import InventarioSugerencias from '../InventarioIngreso/InventarioSugerencias'
+import FirmaScreen from '../Despacho/FirmaScreen'
 
 const Stack = createStackNavigator()
 
@@ -33,6 +34,7 @@ const HomeStack = () =>{
             <Stack.Screen name="Scanner" component = { ScannerScreen } />
             <Stack.Screen name="Datos" component = { DatosClienteVehiculo } />
             <Stack.Screen name="InventarioSugerencias" component = { InventarioSugerencias } />
+            <Stack.Screen name="FirmaScreen" component = { FirmaScreen } />
         </Stack.Navigator>
     )
 }

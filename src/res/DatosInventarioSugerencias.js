@@ -116,3 +116,26 @@ export const DATA = [
     },
 
 ];
+
+export const DATA2 = [
+    {
+        id: '1',
+        detalle: 'Revision 12 meses o 16.000 km',
+        costo: "$30"
+    },
+    {
+        id: '2',
+        detalle: 'Cambio de pastillas',
+        costo: "$10"
+    },
+    {
+        id: '3',
+        detalle: 'Ajustes generales',
+        costo: "$10"
+    },
+    {
+        id: '4',
+        detalle: 'Cambio de filtro de aceite',
+        costo: "$5"
+    },
+];
