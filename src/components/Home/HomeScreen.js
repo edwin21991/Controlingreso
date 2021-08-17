@@ -30,13 +30,13 @@ class HomeScreen extends Component {
                 <View style={ Styles.container}>
                     <Pressable onPress={this.handlePressAgen} style={Styles.pressable}>
                         <Image 
-                            style={ Styles.Imagen}
+                            style={ Styles.imagen}
                             source={require('../../assets/agendado.png')} 
                         />
                     </Pressable>
                     <Pressable onPress={this.handlePressSinAgen} style={Styles.pressable}>
                         <Image 
-                            style={ Styles.Imagen2}
+                            style={ Styles.imagen2}
                             source={require('../../assets/ingresar.jpg')} 
                         />
                     </Pressable>
@@ -64,21 +64,23 @@ const Styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize:20,
         color: "#3f5161",
+        marginRight:60,
     },
 
-    Imagen:{
-        
+    imagen:{
         marginTop:0,
         padding:0,
         width: 200,
         height: 200,
         resizeMode: 'contain',
         borderRadius: 10,
-        marginBottom:-30
+        marginBottom:-30,
     },
-    Imagen2:{
+    imagen2:{
         
         marginTop:30,
+        marginRight:30,
+        marginBottom:30,
         padding:0,
         width: 150,
         height: 150,
@@ -86,7 +88,7 @@ const Styles = StyleSheet.create({
         borderRadius: 10,
     },
     pressable:{
-        // marginTop:30,
+        marginTop: -20
     }
 })
 
