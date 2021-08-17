@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Pressable, FlatList } from 'react-native'
+import { View, Text, StyleSheet, Pressable, FlatList, Image } from 'react-native'
 import AgendaSearch from './AgendaSearch'
 import DatosAgendados from '../../res/Agendados'
 import colors from '../../res/Colors'
@@ -19,7 +19,10 @@ class ListaAgendaScreen extends Component{
                 <Text style={Styles.borde}>
                     Descripción: {Descripcion}
                     <Pressable onPress={this.toogleDatos}>
-                        <Text style={Styles.ButtonIr}>IR</Text> 
+                    <Image 
+                        style={ Styles.imagen2}
+                        source={require('../../assets/next.png')} 
+                    />
                     </Pressable>
                 </Text>
             </View>
@@ -38,6 +41,7 @@ class ListaAgendaScreen extends Component{
                 
                 <AgendaSearch onChange={this.handleSearch}/>  
 
+                <View style={Styles.ContainerLista}>
                     <FlatList
                         style = {Styles.lista}
                         data={DatosAgendados}
@@ -45,12 +49,23 @@ class ListaAgendaScreen extends Component{
                         keyExtractor={item => item.id}
                     />
 
+                    <Image 
+                        style={ Styles.imagen}
+                        source={require('../../assets/agendado.png')} 
+                    />
+                </View>
             </View>
         )
     }
 }
 
 const Styles = StyleSheet.create({
+    
+    ContainerLista:{
+        flexDirection: "row",
+        justifyContent: "space-between",
+    },
+
     texto:{
         fontWeight: 'bold',
         marginLeft: 30,
@@ -67,11 +82,12 @@ const Styles = StyleSheet.create({
         marginLeft:20,
         marginRight:20,
         width:380,
-        marginBottom:70
+        marginBottom:70,
     },
     borde:{
         fontWeight:'bold',
         borderBottomWidth: 2,
+        color: "#3f5161",
     },
     ButtonIr:{
         marginLeft:20,
@@ -83,8 +99,25 @@ const Styles = StyleSheet.create({
        
     },
     textoCita:{
-        fontWeight:'bold'
-    }
+        fontWeight:'bold',
+        color: "#3f5161",
+    },
+    imagen:{   
+        marginTop:30,
+        marginRight:20,
+        padding:0,
+        width: 200,
+        height: 200,
+        resizeMode: 'contain',
+        borderRadius: 10,
+    },
+    imagen2:{   
+        marginLeft:20,
+        padding:0,
+        width: 20,
+        height: 20,
+        resizeMode: 'contain',
+    },
 })
 
 
