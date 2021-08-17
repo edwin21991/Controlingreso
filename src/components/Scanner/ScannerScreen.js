@@ -39,17 +39,7 @@ export default function ScannerScreen () {
                     const nuevoTipo = tipo == back ? front : back
                     setTipo(nuevoTipo)
                   }}                  
-                  />      
-                  <Button
-                    title="Escanear Documento"                   
-                    onPress={toogleDatosVehiculoCliente = () =>{
-                      this.props.navigation.navigate('Datos')
-                    }}
-
-                    />
-                    
-                   
-                                
+                  />            
             
                 </Camera>
             </View>
@@ -74,5 +64,10 @@ const styles = StyleSheet.create({
       width:20, 
       backgroundColor: 'red',
     },
+    btnScanner: {
+      flex:0.1,
+      backgroundColor: 'red',
+
+    }
   });
 

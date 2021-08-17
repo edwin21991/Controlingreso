@@ -6,7 +6,7 @@ class FirmaScreen extends Component{
     render(){
         return(
             <View>
-                <Text>Hola</Text>
+                <Text>El valor total a cancelar es: 55$ </Text>
             </View>
         )
     }
