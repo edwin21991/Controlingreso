@@ -56,22 +56,19 @@ const Styles = StyleSheet.create({
     },
 
     containerText:{
-        // margin: 20,
         flexDirection: "row",
         justifyContent: "space-between",
     },
 
     textAgendado:{
-        // marginBottom:-20,
         fontWeight: 'bold',
         fontSize:20,
-        // backgroundColor:'gray',
+        color: "#3f5161",
     },
 
     Imagen:{
         
         marginTop:0,
-        // marginLeft:-410,
         padding:0,
         width: 200,
         height: 200,
@@ -82,7 +79,6 @@ const Styles = StyleSheet.create({
     Imagen2:{
         
         marginTop:30,
-        // marginLeft:-450,
         padding:0,
         width: 150,
         height: 150,

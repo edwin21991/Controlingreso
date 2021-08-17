@@ -35,7 +35,7 @@ class AgendaSearch extends Component {
 
 const Styles = StyleSheet.create({
     containerSearch:{
-        backgroundColor: 'gray',
+        backgroundColor: '#3f5161',
         borderBottomWidth: 3,
         margin:10,
     },

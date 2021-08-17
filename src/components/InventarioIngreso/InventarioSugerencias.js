@@ -55,7 +55,7 @@ class InventarioSugerencias extends Component{
                     <Text></Text>
                 </View>
 
-                <View style={Styles.containerTitulos}>
+                <View style={Styles.containerTitulos3}>
                     <Text style={Styles.textoLista2}>DETALLE</Text>
                     <Text style={Styles.textoLista}>B</Text>
                     <Text style={Styles.textoLista}>R</Text>
@@ -95,26 +95,26 @@ class InventarioSugerencias extends Component{
                     </Pressable>
                     <Pressable 
                         onPress={this.camara} 
-                        style={Styles.pressable1}
+                        style={Styles.pressable2}
                     >
                          <Image 
                             source={require('../../assets/camara.png')} 
                             style={Styles.imagen2} 
                         />
                     </Pressable>
-                    <Pressable 
+                    {/* <Pressable 
                         onPress={this.guardarInventarioIngreso} 
-                        style={Styles.pressable1}
+                        style={Styles.pressable3}
                     >
                          <Image 
                             source={require('../../assets/save.png')} 
                             style={Styles.imagen3} 
                         />
-                    </Pressable>
+                    </Pressable> */}
 
                     <Pressable 
                         onPress={this.NuevoPedido}
-                        style={Styles.pressable2}
+                        style={Styles.pressable4}
                     >
                          <Image 
                             source={require('../../assets/add.png')} 
@@ -123,10 +123,10 @@ class InventarioSugerencias extends Component{
                     </Pressable>
                     <Pressable 
                         onPress={this.guardarPedido}
-                        style={Styles.pressable2}
+                        style={Styles.pressable4}
                     >
                          <Image 
-                            source={require('../../assets/save.png')} 
+                            source={require('../../assets/next.png')} 
                             style={Styles.imagen5}
                         />
                     </Pressable>
@@ -146,26 +146,26 @@ const Styles = StyleSheet.create({
     },
     textoTitulo:{
         fontWeight:'bold',
+        color: '#3f5161',
         marginLeft:30,
         marginTop:10,
         marginBottom:10,
     },
     textoTitulo2:{
-        fontWeight:'bold',
+        color: '#3f5161',
         marginLeft:15,
         marginTop:10,
         marginBottom:10,
         width:100,
     },
     textoTitulo3:{
-        fontWeight:'bold',
-        // marginLeft:30,
+        color: '#3f5161',
         marginTop:10,
         marginBottom:10,
         width:100,
     },
     textoTitulo4:{
-        fontWeight:'bold',
+        color: '#3f5161',
         marginLeft:15,
         marginRight:30,
         marginTop:10,
@@ -183,7 +183,7 @@ const Styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent:'space-between',
         marginLeft: 20,
-        marginTop:-130
+        // marginTop:-150
     },
     textoButtonActu:{
         fontSize:20,
@@ -192,7 +192,6 @@ const Styles = StyleSheet.create({
         marginBottom:10,
     },
     containerInput:{
-        marginBottom: 10,
         flexDirection: 'row',
         justifyContent:'space-between',
     },
@@ -200,6 +199,7 @@ const Styles = StyleSheet.create({
         // marginLeft:20,
         marginRight:20,
         width:180,
+        height:168,
     },
     titulo:{
         fontWeight:'bold'
@@ -208,43 +208,65 @@ const Styles = StyleSheet.create({
         width:50,
         height:30,
         alignItems:'center',
-        borderRadius:20,
-        // backgroundColor:'gray',
+        borderRadius:50,
+        marginTop:3,
     },
     pressable2:{
         width:50,
         height:30,
         alignItems:'center',
+        borderRadius:50,
+        marginTop:3,
+        marginRight:20,
+    },
+    pressable3:{
+        width:50,
+        height:30,
+        borderRadius:20,
+        marginRight:90,
+        marginTop:3,
+    },
+    pressable4:{
+        width:50,
+        height:30,
         borderRadius:20,
         marginRight:30,
+        marginTop:3,
     },
     containerTitulos:{
         flexDirection: 'row',
+        borderBottomWidth: 1,
+    },
+    containerTitulos3:{
+        flexDirection: 'row',
         borderBottomWidth: 2,
-        // width:350,
     },
     containerTitulos2:{
         flexDirection: 'row',
         justifyContent:'space-between',
-        borderBottomWidth: 2,
+        borderBottomWidth: 1,
         width:350,
     },
     textoLista:{
+        color: '#3f5161',
         marginLeft:56,
         fontWeight:'bold',
         marginBottom:10
     },
     textoLista2:{
+        color: '#3f5161',
         marginLeft:15,
         fontWeight:'bold',
         marginBottom:10
     },
     textoLista3:{
+        color: '#3f5161',
         marginLeft:32,
         fontWeight:'bold',
         marginBottom:10
     },
     textoLista4:{
+        color: '#3f5161',
         marginLeft:40,
         marginRight:145,
         fontWeight:'bold',
@@ -255,32 +277,33 @@ const Styles = StyleSheet.create({
         marginBottom:100
     },
     imagen:{
-        marginTop:-113,
+        marginTop:-5,
         width:35,
+        height:35,
         resizeMode: 'contain',
     },
     imagen2:{
-        marginTop:-80,
+        marginTop:-5,
         width:40,
+        height:40,
         resizeMode: 'contain',
-        marginRight:60
     },
     imagen3:{
-        marginTop:-110,
         width:30,
+        height:30,
         resizeMode: 'contain',
-        marginRight:60
     },
     imagen4:{
-        marginTop:-174,
         width:30,
+        height:30,
         resizeMode: 'contain',
     },
     imagen5:{
-        marginTop:-410,
-        width:100,
+        width:30,
+        height:30,
         resizeMode: 'contain',
     },
+    
 })
 
 export default InventarioSugerencias

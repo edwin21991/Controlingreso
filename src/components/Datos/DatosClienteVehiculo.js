@@ -1,8 +1,33 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, StyleSheet, FlatList, Pressable, Picker } from 'react-native'
+import { View, Text, TextInput, StyleSheet, FlatList, Pressable, Image,Picker } from 'react-native'
 import {DATA, DATA2} from '../../res/DatosVehiculoCliente'
+import RNPickerSelect from 'react-native-picker-select';
 
 class DatosClienteVehiculo extends Component{
+    
+    constructor(props) {
+        super(props);
+
+        this.inputRefs = {};
+
+        this.state = {
+            favColor: undefined,
+            items: [
+                {
+                    label: 'Propietario',
+                    value: 'propietario',
+                },
+                {
+                    label: 'Conductor',
+                    value: 'conductor',
+                },
+                {
+                    label: 'Otro contacto',
+                    value: 'contacto',
+                },
+            ]
+        };
+    }
 
     toogleInventarioSugerencias = () => {
         this.props.navigation.navigate('InventarioSugerencias')
@@ -51,8 +76,35 @@ class DatosClienteVehiculo extends Component{
             <View >
 
                 <View style={Styles.container}>
+
                     <Text style={Styles.textoTitulo}>DATOS DEL VEHÍCULO</Text>
+            
+                    <View style={Styles.container2}>
                     <Text style={Styles.textoTitulo}>CONTACTOS</Text>
+                        <RNPickerSelect
+                            style={Styles.textoTitulo2}
+                            placeholder={{
+                                label: '',
+                                value: null,
+                            }}
+                            items={this.state.items}
+                            onValueChange={(value) => {
+                                this.setState({
+                                    favColor: value,
+                                });
+                            }}
+                            onUpArrow={() => {
+                                this.inputRefs.name.focus();
+                            }}
+                            onDownArrow={() => {
+                                this.inputRefs.picker2.togglePicker();
+                            }}
+                            value={this.state.favColor}
+                            ref={(el) => {
+                                this.inputRefs.picker = el;
+                            }}
+                        />
+                    </View>
                     <Text></Text>
                 </View>
                 
@@ -73,19 +125,27 @@ class DatosClienteVehiculo extends Component{
                     />
 
                 </View>
+
                 <View style={Styles.actualizar}>
+
                     <Pressable 
                         onPress={this.toogleInventarioSugerencias} 
                         style={Styles.pressable1}
                     >
-                        <Text style={Styles.textoButtonActu}>Actualizar</Text>
+                        <Image 
+                            source={require('../../assets/actualizar.png')} 
+                            style={Styles.imagen} 
+                        />
                     </Pressable>
 
                     <Pressable 
                         onPress={this.toogleInventarioSugerencias}
                         style={Styles.pressable2}
                     >
-                        <Text style={Styles.textoButtonActu}>Actualizar</Text>
+                        <Image 
+                            source={require('../../assets/actualizar.png')} 
+                            style={Styles.imagen} 
+                        />
                     </Pressable>
                 </View>
             </View>   
@@ -103,10 +163,16 @@ const Styles = StyleSheet.create({
     },
     textoTitulo:{
         fontWeight:'bold',
+        color: '#3f5161'
+    },
+    textoTitulo2:{
+        fontWeight:'bold',
+        color: '#3f5161',
+        width:40,
     },
     textInput:{
         borderBottomWidth: 3,
-        backgroundColor: 'gray',
+        backgroundColor:'#3f5161',
         borderRadius:5,
         paddingLeft:5,
         color: 'white'
@@ -115,7 +181,7 @@ const Styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent:'space-between',
         marginLeft: 20,
-        marginBottom:-150
+        marginBottom:-190
     },
     textoButtonActu:{
         fontSize:20,
@@ -142,18 +208,99 @@ const Styles = StyleSheet.create({
         height:30,
         alignItems:'center',
         borderRadius:20,
-        // marginLeft:20,
-        backgroundColor:'gray',
     },
     pressable2:{
         width:300,
         height:30,
         alignItems:'center',
         borderRadius:20,
-        backgroundColor:'gray',
         marginRight:30
-    }
+    },
+    imagen:{   
+        width: 40,
+        height: 40,
+        resizeMode: 'contain',
+        borderRadius: 10,
+        marginTop: -5,
+    },
+    container2: {
+        // flexDirection: 'row',
+        // justifyContent:'space-between',
+        marginRight: 30,
+    },
 })
 
 export default DatosClienteVehiculo
 
+// import React from 'react';
+// import { Alert, Text, TextInput, StyleSheet, View } from 'react-native';
+// import RNPickerSelect from 'react-native-picker-select';
+
+// export default class DatosClienteVehiculo extends React.Component {
+//     constructor(props) {
+//         super(props);
+
+//         this.inputRefs = {};
+
+//         this.state = {
+//             favColor: undefined,
+//             items: [
+//                 {
+//                     label: 'Red',
+//                     value: 'red',
+//                 },
+//                 {
+//                     label: 'Orange',
+//                     value: 'orange',
+//                 },
+//                 {
+//                     label: 'Blue',
+//                     value: 'blue',
+//                 },
+//             ]
+//         };
+//     }
+
+//     render() {
+//         return (
+//             <View style={styles.container}>
+
+//                 <View style={{ paddingVertical: 5 }} />
+
+//                 <Text>What&rsquo;s your favorite color?</Text>
+//                 <RNPickerSelect
+//                     placeholder={{
+//                         label: 'Select a color...',
+//                         value: null,
+//                     }}
+//                     items={this.state.items}
+//                     onValueChange={(value) => {
+//                         this.setState({
+//                             favColor: value,
+//                         });
+//                     }}
+//                     onUpArrow={() => {
+//                         this.inputRefs.name.focus();
+//                     }}
+//                     onDownArrow={() => {
+//                         this.inputRefs.picker2.togglePicker();
+//                     }}
+//                     // style={{ ...pickerSelectStyles }}
+//                     value={this.state.favColor}
+//                     ref={(el) => {
+//                         this.inputRefs.picker = el;
+//                     }}
+//                 />
+//             </View>
+//         );
+//     }
+// }
+
+// const styles = StyleSheet.create({
+//     container: {
+//         paddingTop: 30,
+//         backgroundColor: '#fff',
+//         justifyContent: 'center',
+//         paddingHorizontal: 10,
+//     },
+// });
