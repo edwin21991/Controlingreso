@@ -7,12 +7,12 @@ export const DATA = [
     {
         id: '2',
         title: 'MARCA',
-        dato: "Yamaha"
+        dato: "HONDA"
     },
     {
         id: '3',
         title: 'MODELO',
-        dato: "FAZER"
+        dato: "INVICTA"
     },
     {
         id: '4',

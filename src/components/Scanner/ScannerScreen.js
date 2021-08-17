@@ -1,49 +1,61 @@
 import React, {Component, useState, useEffect} from 'react' 
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Button, Pressable } from 'react-native';
 import { Camera } from 'expo-camera';
+import { Constants } from 'expo-constants'
+import { StackNavigator } from 'react-navigation'
+import {DatosClienteVehiculo} from '../Datos/DatosClienteVehiculo'
 
-class ScannerScreen extends Component{
+export default function ScannerScreen () {
 
-    render(){
 
-        const [hasPermission, setHasPermission] = useState(null);
-        const [type, setType] = useState(Camera.Constants.Type.back);
 
-        useEffect(() => {
-            (async () => {
-            const { status } = await Camera.requestPermissionsAsync();
-            setHasPermission(status === 'granted');
-            })();
-        }, []);
+    
+        const [permisos, setPermisos] = useState(null);
+        const [tipo, setTipo] = useState(Camera.Constants.Type.back);
 
-        if (hasPermission === null) {
-            return <View />;
-        }
-        if (hasPermission === false) {
-            return <Text>No access to camera</Text>;
+        const getPermisos = async () => {
+          const { status } = await Camera.requestPermissionsAsync()
+          setPermisos(status == 'granted')
+          console.log(status);
         }
 
-        return(
+        useEffect(()=>{
+          getPermisos()
+        })
+
+        if (permisos == null) {
+          return <View><Text>Esperando permisos...</Text></View>
+        }
+        if (permisos == false) {
+          return <View><Text>No fueron otorgados los permisos</Text></View>
+        }
+        return(    
             <View style={styles.container}>
-                <Camera style={styles.camera} type={type}>
-                    <View style={styles.buttonContainer}>
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => {
-                        setType(
-                            type === Camera.Constants.Type.back
-                            ? Camera.Constants.Type.front
-                            : Camera.Constants.Type.back
-                        );
-                        }}>
-                        <Text style={styles.text}> Flip </Text>
-                    </TouchableOpacity>
-                    </View>
+                <Camera style={styles.camera} type={tipo}>
+                  <Button style = {styles.btn}
+                  title="Voltear"
+                  onPress = {() => {
+                    const {front, back} = Camera.Constants.Type
+                    const nuevoTipo = tipo == back ? front : back
+                    setTipo(nuevoTipo)
+                  }}                  
+                  />      
+                  <Button
+                    title="Escanear Documento"                   
+                    onPress={toogleDatosVehiculoCliente = () =>{
+                      this.props.navigation.navigate('Datos')
+                    }}
+
+                    />
+                    
+                   
+                                
+            
                 </Camera>
             </View>
         )
     }
-}
+
 
 const styles = StyleSheet.create({
     container: {
@@ -52,22 +64,15 @@ const styles = StyleSheet.create({
     camera: {
       flex: 1,
     },
-    buttonContainer: {
-      flex: 1,
-      backgroundColor: 'transparent',
-      flexDirection: 'row',
-      margin: 20,
-    },
-    button: {
-      flex: 0.1,
-      alignSelf: 'flex-end',
-      alignItems: 'center',
-    },
     text: {
       fontSize: 18,
       color: 'white',
     },
+    btn: {
+      flex:0.1,
+      marginTop: 80,
+      width:20, 
+      backgroundColor: 'red',
+    },
   });
-
-export default ScannerScreen
 
