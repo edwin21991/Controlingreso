@@ -1,3 +1,4 @@
+
 import React, {Component, useState, useEffect} from 'react' 
 import { StyleSheet, Text, View, TouchableOpacity, Button, Pressable } from 'react-native';
 import { Camera } from 'expo-camera';
@@ -5,7 +6,10 @@ import { Constants } from 'expo-constants'
 import { StackNavigator } from 'react-navigation'
 import {DatosClienteVehiculo} from '../Datos/DatosClienteVehiculo'
 
+
+
 export default function ScannerScreen () {
+
 
 
 
@@ -42,10 +46,8 @@ export default function ScannerScreen () {
                   />            
             
                 </Camera>
-            </View>
-        )
-    }
-
+                </View>
+        )}
 
 const styles = StyleSheet.create({
     container: {
@@ -70,4 +72,6 @@ const styles = StyleSheet.create({
 
     }
   });
+
+
 
