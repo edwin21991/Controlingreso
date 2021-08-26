@@ -35,7 +35,8 @@ const HomeStack = () =>{
             <Stack.Screen name="Datos" component = { DatosClienteVehiculo } />
             <Stack.Screen name="InventarioSugerencias" component = { InventarioSugerencias } />
             <Stack.Screen name="FirmaScreen" component = { FirmaScreen } />
-            
+            {/* <Stack.Screen name="Imagen" component = {ImagenPreview}/>   */}
+
         </Stack.Navigator>
     )
 }

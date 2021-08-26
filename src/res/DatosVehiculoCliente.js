@@ -31,7 +31,7 @@ export const DATA = [
     },
     {
         id: '7',
-        title: 'KM ACTUAL',
+        title: 'KM ANTERIOR',
         dato: "56320"
     },
     {

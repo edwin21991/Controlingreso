@@ -17,13 +17,14 @@ class ListaAgendaScreen extends Component{
                 <Text style={Styles.textoCita}>Asesor: {asesor}</Text>
                 <Text style={Styles.textoCita}>Fecha de cita: {fechaCita}</Text>
                 <Text style={Styles.borde}>
-                    Descripción: {Descripcion}
-                    <Pressable onPress={this.toogleDatos}>
+                Descripción: {Descripcion}
+                <Pressable
+                    onPress={this.toogleDatos}>
                     <Image 
                         style={ Styles.imagen2}
                         source={require('../../assets/next.png')} 
                     />
-                    </Pressable>
+                </Pressable>
                 </Text>
             </View>
         )

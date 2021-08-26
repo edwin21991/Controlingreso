@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, StyleSheet, FlatList, Pressable, Image,Picker } from 'react-native'
+import { View, Text, TextInput, StyleSheet, FlatList, Pressable, Image } from 'react-native'
 import {DATA, DATA2} from '../../res/DatosVehiculoCliente'
 import RNPickerSelect from 'react-native-picker-select';
 
@@ -78,10 +78,46 @@ class DatosClienteVehiculo extends Component{
                 <View style={Styles.container}>
 
                     <Text style={Styles.textoTitulo}>DATOS DEL VEHÍCULO</Text>
-            
+                    <TextInput
+                        style = {Styles.textInputKM}
+                        placeholder="Ingrese el km actual"
+                       
+                    />
+
                     <View style={Styles.container2}>
-                    <Text style={Styles.textoTitulo}>CONTACTOS</Text>
-                        <RNPickerSelect
+                        <Text style={Styles.textoTitulo}>CONTACTOS</Text>
+                        
+                        <Pressable 
+                            onPress={this.propietario} 
+                            style={Styles.pressable3}
+                        >
+                            <Image 
+                                source={require('../../assets/propietario.png')} 
+                                style={Styles.imagen2} 
+                            />
+                        </Pressable>
+
+                        <Pressable 
+                            onPress={this.conductor} 
+                            style={Styles.pressable3}
+                        >
+                            <Image 
+                                source={require('../../assets/conductor.png')} 
+                                style={Styles.imagen3} 
+                            />
+                        </Pressable>
+
+                        <Pressable 
+                            onPress={this.contacto} 
+                            style={Styles.pressable3}
+                        >
+                            <Image 
+                                source={require('../../assets/contacto.png')} 
+                                style={Styles.imagen4} 
+                            />
+                        </Pressable>
+
+                        {/* <RNPickerSelect
                             style={Styles.textoTitulo2}
                             placeholder={{
                                 label: '',
@@ -103,9 +139,8 @@ class DatosClienteVehiculo extends Component{
                             ref={(el) => {
                                 this.inputRefs.picker = el;
                             }}
-                        />
+                        /> */}
                     </View>
-                    <Text></Text>
                 </View>
                 
                 <View style={Styles.containerInput}>
@@ -177,18 +212,21 @@ const Styles = StyleSheet.create({
         paddingLeft:5,
         color: 'white'
     },
+    textInputKM:{
+        borderWidth:2,
+        borderColor: "#3f5161",
+        borderRadius:5,
+        color: 'white',
+        marginBottom:5,
+        paddingLeft:5,
+        marginLeft:-70,
+        height:25,
+    },
     actualizar:{
         flexDirection: 'row',
         justifyContent:'space-between',
         marginLeft: 20,
-        marginBottom:-190
-    },
-    textoButtonActu:{
-        fontSize:20,
-        color: 'white',
-        fontWeight:'bold',
-        marginBottom:10,
-       
+        marginBottom:-170
     },
     containerInput:{
         marginBottom: 10,
@@ -216,6 +254,12 @@ const Styles = StyleSheet.create({
         borderRadius:20,
         marginRight:30
     },
+    pressable3:{
+        width:80,
+        height:30,
+        borderRadius:20,
+        
+    },
     imagen:{   
         width: 40,
         height: 40,
@@ -223,10 +267,33 @@ const Styles = StyleSheet.create({
         borderRadius: 10,
         marginTop: -5,
     },
+    imagen2:{   
+        width: 30,
+        height: 30,
+        resizeMode: 'contain',
+        borderRadius: 10,
+        marginLeft:20,
+        marginTop: -5,
+    },
+    imagen3:{   
+        width: 30,
+        height: 30,
+        resizeMode: 'contain',
+        borderRadius: 10,
+        marginLeft:15,
+        marginTop: -4,
+    },
+    imagen4:{   
+        width: 45,
+        height: 45,
+        resizeMode: 'contain',
+        borderRadius: 10,
+        marginTop: -11,
+    },
+
     container2: {
-        // flexDirection: 'row',
-        // justifyContent:'space-between',
-        marginRight: 30,
+        flexDirection: 'row',
+        justifyContent:'space-between',
     },
 })
 
